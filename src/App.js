@@ -1,10 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Charts } from './components/Pages/Charts/Charts';
 function App() {
   return (
-    <div className="App">
-
+    <div>
+      <Charts />
     </div>
   );
 }
