@@ -70,8 +70,8 @@ export const WeekChart = () => {
     labels: dates,
     datasets: [{
     data: payout,
-    backgroundColor: '#d9514e80', 
-    borderColor: '#d9514e',
+    backgroundColor: '#7D8CD780', 
+    borderColor: '#7D8CD7',
     borderWidth: 2
     }]
     },
