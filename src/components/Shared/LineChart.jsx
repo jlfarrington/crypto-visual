@@ -50,17 +50,34 @@ export const LineChart = (props) => {
 
     let options = {
         responsive: true,
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              var label = data.datasets[tooltipItem.datasetIndex].label || "";
+
+              if (label) {
+                label += ": ";
+              }
+              label += Math.round(tooltipItem.yLabel * 100) / 100;
+              return "$" + label;
+            },
+          },
+        },
         legend: {
-            display: false
+          display: false,
         },
         scales: {
-            yAxis: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
+          yAxes: [
+            {
+              ticks: {
+                callback: function (value, index, values) {
+                  return "$" + value;
+                },
+              },
+            },
+          ],
+        },
+      }
 
     useEffect(() => {
         const unsortedData = props.data;
