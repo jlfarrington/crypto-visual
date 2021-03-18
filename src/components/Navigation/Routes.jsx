@@ -1,4 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
+import { CustomChart } from '../Pages/Charts/CustomChart'
 import { MonthChart } from '../Pages/Charts/MonthChart';
 import { WeekChart } from '../Pages/Charts/WeekChart';
 import { ThreeMonthChart } from '../Pages/Charts/ThreeMonthChart';
@@ -14,6 +15,7 @@ export const Routes = () => {
                 <Route exact path="/threemonth"><ThreeMonthChart /></Route>
                 <Route exact path="/year"><YearChart /></Route>
                 <Route exact path="/alltime"><AllTimeChart /></Route>
+                <Route exact path="/custom"><CustomChart /></Route>
             </Switch>
         </>
     )
