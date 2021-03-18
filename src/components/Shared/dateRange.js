@@ -1,34 +1,34 @@
+const formatDaysAndMonth = (dateDays, dateMonth, dateYear) => {
+  // date formatting for chart.js api
+  if (dateDays < 10) {
+    dateDays = "0" + dateDays;
+  }
+  if (dateMonth < 10) {
+    dateMonth = "0" + dateMonth;
+  }
+
+  return dateYear + "-" + dateMonth + "-" + dateDays;
+}
+
 const dateRange = (days) => {
-    // get date strings
+  // end date
   let endDate = new Date();
-  let dd = endDate.getDate();
-  let mm = endDate.getMonth() + 1;
-  let yyyy = endDate.getFullYear();
+  let endDateDays = endDate.getDate();
+  let endDateMonth = endDate.getMonth() + 1;
+  let endDateYear = endDate.getFullYear();
 
-  if (dd < 10) {
-    dd = "0" + dd;
-  }
-  if (mm < 10) {
-    mm = "0" + mm;
-  }
+  endDate = formatDaysAndMonth(endDateDays, endDateMonth, endDateYear);
 
-  endDate = yyyy + "-" + mm + "-" + dd;
+  // start date
+  var startDate = new Date();
+  startDate.setDate(startDate.getDate() - days);
+  let startDateDays = startDate.getDate();
+  let startDateMonth = startDate.getMonth() + 1;
+  let startDateYear = startDate.getFullYear();
 
-  let startDate = new Date();
-  let dd1w = startDate.getDate() - days;
-  let mm1w = startDate.getMonth() + 1;
-  let yyyy1w = startDate.getFullYear();
+  startDate = formatDaysAndMonth(startDateDays, startDateMonth, startDateYear);
 
-  if (dd1w < 10) {
-    dd1w = "0" + dd1w;
-  }
-  if (mm1w < 10) {
-    mm1w = "0" + mm1w;
-  }
-
-  startDate = yyyy1w + "-" + mm1w + "-" + dd1w;
-
-  return{
+  return {
       startDate, endDate
   }
 }
