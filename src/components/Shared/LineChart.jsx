@@ -1,112 +1,70 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
-import { Chart } from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
 export const LineChart = (props) => {
-    const [dates, setDates] = useState([]);
-    const [payout, setPayout] = useState([]);
-    const [dimensions, setDimensions] = useState({ height: window.innerHeight, width: window.innerWidth });
-    const [isLoading, setIsLoading] = useState(false);
+  const [dates, setDates] = useState([]);
+  const [payout, setPayout] = useState([]);
 
-    // working on responsive design 
-
-    // function debounce(fn, ms) {
-    //     let timer;
-    //     return () => {
-    //         clearTimeout(timer);
-    //         timer = setTimeout(() => {
-    //             timer = null
-    //             fn.apply(this, arguments)
-    //         }, ms)
-    //     };
-    // }
-
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     const debouncedHandleResize = debounce(function handleResize() {
-    //         setDimensions({
-    //             height: window.innerHeight,
-    //             width: window.innerWidth
-    //         })
-    //     }, 1000);
-
-    //     window.addEventListener('resize', debouncedHandleResize);
-    //     setIsLoading(false);
-    //     return () => {
-    //         window.removeEventListener('resize', debouncedHandleResize);
-    //     }
-    // })
-
-    let data = {
-        labels: dates,
-        datasets: [{
-            data: payout,
-            backgroundColor: '#d9514e80',
-            borderColor: '#d9514e',
-            borderWidth: 2
-        }]
-
+  useEffect(() => {
+    const unsortedData = props.data;
+    let dates = [];
+    let payout = [];
+    for (let item in unsortedData) {
+      let bitcoinDates = moment(item).format('MMM DD');
+      dates.push(bitcoinDates);
+      payout.push(unsortedData[item]);
     }
+    setDates(dates);
+    setPayout(payout);
+  }, [props.data])
 
-    let options = {
-        responsive: true,
-        tooltips: {
-          callbacks: {
-            label: function (tooltipItem, data) {
-              var label = data.datasets[tooltipItem.datasetIndex].label || "";
+  let data = {
+    labels: dates,
+    datasets: [{
+      data: payout,
+      backgroundColor: '#d9514e80',
+      borderColor: '#d9514e',
+      borderWidth: 2
+    }]
+  }
 
-              if (label) {
-                label += ": ";
-              }
-              label += Math.round(tooltipItem.yLabel * 100) / 100;
-              return "$" + label;
+  let options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          let label = data.datasets[tooltipItem.datasetIndex].label || "";
+
+          if (label) {
+            label += ": ";
+          }
+          label += Math.round(tooltipItem.yLabel * 100) / 100;
+          return "$" + label;
+        },
+      },
+    },
+    legend: {
+      display: false,
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            callback: function (value) {
+              return "$" + value;
             },
           },
         },
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                callback: function (value, index, values) {
-                  return "$" + value;
-                },
-              },
-            },
-          ],
-        },
-      }
+      ],
+    },
+  }
 
-    useEffect(() => {
-        const unsortedData = props.data;
-        let dates = [];
-        let payout = [];
-        for (let item in unsortedData) {
-            let bitcoinDates = moment(item).format('MMM DD');
-            dates.push(bitcoinDates);
-            payout.push(unsortedData[item]);
-        }
-        setDates(dates);
-        setPayout(payout);
-    }, [props.data])
+  return (
+    <div className="chart-container" style={{ height: '80vh', width: '90%' }}>
+      <Line data={data} options={options} />
+    </div>
 
-    useEffect(() => {
-        Chart.Line('chart', {
-            options: options,
-            data: data
-        })
-    }, [dates, payout, data, options]);
-
-
-    return (
-        <div className="chart-container" style={{ position: 'relative', height: '40vh', width: '80vw' }}>
-            {
-                isLoading ?  <></> :
-                <canvas id='chart' aria-label="Bitcoin Chart" role="img"> </canvas>
-            }
-        </div>
-
-    )
+  )
 }

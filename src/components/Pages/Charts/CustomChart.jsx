@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LineChart } from "../../Shared/LineChart";
 
 export const CustomChart = () => {
@@ -8,22 +8,16 @@ export const CustomChart = () => {
   const [customPrices, setCustomPrices] = useState([]);
   const customURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
 
-
-    const getCustomData = async () => {
-      const response = await fetch(customURL);
-      const bitcoinData = await response.json();
-      setCustomData(bitcoinData.bpi);
-      setCustomPrices(Object.values(bitcoinData.bpi))
-      console.log(customData)
-      console.log(customPrices)
-    };
-
-    
+  const getCustomData = async () => {
+    const response = await fetch(customURL);
+    const bitcoinData = await response.json();
+    setCustomData(bitcoinData.bpi);
+    setCustomPrices(Object.values(bitcoinData.bpi))
+  };
 
   return (
-   
     <>
-    {console.log(customData)}
+      {console.log(customData)}
       <div>
         <label htmlFor="start-date">Start date:</label>
         <input
@@ -47,7 +41,7 @@ export const CustomChart = () => {
           </div>
           <div>
             <h3>Change in price from {startDate} to {endDate}:</h3>
-            <h3>{customPrices[customPrices.length-1] -  customPrices[1]}</h3>
+            <h3>{customPrices[customPrices.length - 1] - customPrices[1]}</h3>
           </div>
         </div>
       ) : null}
