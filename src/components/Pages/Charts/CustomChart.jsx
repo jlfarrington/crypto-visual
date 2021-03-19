@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { LineChart } from "../../Shared/LineChart";
+import { useState } from 'react';
+import { LineChart } from '../../Shared/LineChart';
 
 export const CustomChart = () => {
   const [customData, setCustomData] = useState();
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [customPrices, setCustomPrices] = useState([]);
   const customURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
 
@@ -17,18 +17,17 @@ export const CustomChart = () => {
 
   return (
     <>
-      {console.log(customData)}
       <div>
-        <label htmlFor="start-date">Start date:</label>
+        <label htmlFor='start-date'>Start date:</label>
         <input
-          type="date"
-          id="start-date"
+          type='date'
+          id='start-date'
           onChange={(e) => setStartDate(e.target.value)}
         />
-        <label htmlFor="end-date">End date:</label>
+        <label htmlFor='end-date'>End date:</label>
         <input
-          type="date"
-          id="end-date"
+          type='date'
+          id='end-date'
           onChange={(e) => setEndDate(e.target.value)}
         />
         <button onClick={() => getCustomData()}>Submit</button>
