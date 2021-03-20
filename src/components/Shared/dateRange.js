@@ -19,6 +19,14 @@ const dateRange = (days) => {
 
   endDate = formatDaysAndMonth(endDateDays, endDateMonth, endDateYear);
 
+  // yesterday
+  let yesterday = new Date();
+  let yesterdayDays = yesterday.getDate() - 1;
+  let yesterdayMonth = yesterday.getMonth() + 1;
+  let yesterdayYear = yesterday.getFullYear();
+
+  yesterday = formatDaysAndMonth(yesterdayDays, yesterdayMonth, yesterdayYear);
+
   // start date
   var startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
@@ -29,7 +37,7 @@ const dateRange = (days) => {
   startDate = formatDaysAndMonth(startDateDays, startDateMonth, startDateYear);
 
   return {
-      startDate, endDate
+      startDate, endDate, yesterday
   }
 }
 
