@@ -9,10 +9,15 @@ export const CustomChart = () => {
   const customURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
 
   const getCustomData = async () => {
-    const response = await fetch(customURL);
-    const bitcoinData = await response.json();
-    setCustomData(bitcoinData.bpi);
-    setCustomPrices(Object.values(bitcoinData.bpi))
+    const response = await fetch(customURL)
+    .then(data => data.json())
+    .then(bitcoinData => {
+      setCustomData(bitcoinData.bpi);
+      setCustomPrices(Object.values(bitcoinData.bpi))
+    })
+    .catch(() => alert('please enter accurate date'));
+    return response;
+
   };
 
   return (
@@ -43,7 +48,7 @@ export const CustomChart = () => {
             <h3>{customPrices[customPrices.length - 1] - customPrices[1]}</h3>
           </div>
         </div>
-      ) : null}
+      ) : <></>}
     </>
   );
 };

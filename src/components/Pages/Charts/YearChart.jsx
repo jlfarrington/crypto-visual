@@ -24,10 +24,11 @@ export const YearChart = () => {
       // get days from date string
       let splitDate = date.split('-');
       // get one day from every week of the year
-      return splitDate[2] % 7 === 0;
+      return splitDate[2] % 4 === 0;
     })
 
-    const allowedDates = filteredDates;
+    // make sure to include most recent date
+    const allowedDates = [...filteredDates, dateRange(7).yesterday];
     // filter object to only include bitcoin price from filtered dates above
     const filtered = Object.keys(bitcoinData)
       .filter(key => allowedDates.includes(key))
