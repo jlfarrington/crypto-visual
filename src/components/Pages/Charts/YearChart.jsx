@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
+
 import dateRange from '../../Shared/dateRange';
+import { SampleCalculation } from '../Calculations/SampleCalculation'
 
 export const YearChart = () => {
   const [yearData, setYearData] = useState([]);
+  const [yearPrices, setYearPrices] = useState([]);
   const startDate = dateRange(365).startDate;
   const endDate = dateRange(365).endDate;
   const yearURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
@@ -14,6 +17,7 @@ export const YearChart = () => {
       const bitcoinData = await response.json();
       const filtered = filterData(bitcoinData.bpi);
       setYearData(filtered);
+      setYearPrices(Object.values(filtered))
     };
     getYearData();
   }, [yearURL]);
@@ -40,5 +44,5 @@ export const YearChart = () => {
     return filtered;
   }
 
-  return <> {yearData ? <LineChart data={yearData} /> : null} </>;
+  return <> {yearData ? <> <LineChart data={yearData} /> <SampleCalculation startDate={startDate} endDate={endDate} prices={yearPrices} /> </>: null} </>;
 }
