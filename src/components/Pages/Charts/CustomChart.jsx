@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
+import { CustomCalculation } from '../Calculations/CustomCalculation'
 
 export const CustomChart = () => {
   const [customData, setCustomData] = useState();
@@ -43,10 +44,7 @@ export const CustomChart = () => {
           <div>
             <LineChart data={customData} />
           </div>
-          <div>
-            <h3>Change in price from {startDate} to {endDate}:</h3>
-            <h3>{customPrices[customPrices.length - 1] - customPrices[1]}</h3>
-          </div>
+            <CustomCalculation startDate={startDate} endDate={endDate} prices={customPrices} />
         </div>
       ) : <></>}
     </>

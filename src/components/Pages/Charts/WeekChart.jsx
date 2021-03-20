@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
+import { SampleCalculation } from '../Calculations/SampleCalculation'
 import dateRange from '../../Shared/dateRange';
+
 
 export const WeekChart = () => {
   const [weekData, setWeekData] = useState([]);
+  const [weekPrices, setWeekPrices] = useState([]);
   const startDate = dateRange(7).startDate;
   const endDate = dateRange(7).endDate;
   const weekURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
@@ -13,9 +16,10 @@ export const WeekChart = () => {
       const response = await fetch(weekURL);
       const bitcoinData = await response.json();
       setWeekData(bitcoinData.bpi);
+      setWeekPrices(Object.values(bitcoinData.bpi))
     };
     getWeekData();
   }, [weekURL]);
 
-  return <> {weekData ? <LineChart data={weekData} /> : null} </>;
+  return <> {weekData ? <><LineChart data={weekData} /><SampleCalculation startDate={startDate} endDate={endDate} prices={weekPrices} /></> : null} </>;
 };
