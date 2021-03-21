@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { LineChart } from '../../Shared/LineChart';
+import { MonthCalculation } from '../Calculations/MonthCalculation'
 
 export const MonthChart = () => {
     const [monthData, setMonthData] = useState([]);
+    const [monthPrices, setMonthPrices] = useState([]);
     const monthURL = 'https://api.coindesk.com/v1/bpi/historical/close.json';
 
     useEffect(() => {
@@ -10,9 +12,10 @@ export const MonthChart = () => {
           const response = await fetch(monthURL);
           const bitcoinData = await response.json();
           setMonthData(bitcoinData.bpi);
+          setMonthPrices(Object.values(bitcoinData.bpi))
         };
         getMonthData();
       }, [monthURL]);
 
-    return <> {monthData ? <LineChart data={monthData}/>: null} </>
+    return <> {monthData ? <><LineChart data={monthData}/> <MonthCalculation prices={monthPrices} /></>: null} </>
 }
