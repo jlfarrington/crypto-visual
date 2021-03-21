@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
 import { CustomCalculation } from '../Calculations/CustomCalculation'
 
+import './Charts.css'
+
 export const CustomChart = () => {
   const [customData, setCustomData] = useState();
   const [startDate, setStartDate] = useState('');
@@ -23,7 +25,9 @@ export const CustomChart = () => {
 
   return (
     <>
-      <div>
+    <h2>Select Start and End Dates to View Bitcoin Data:</h2>
+      <div className="custom-date-input">
+        
         <label htmlFor='start-date'>Start date:</label>
         <input
           type='date'

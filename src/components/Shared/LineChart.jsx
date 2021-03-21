@@ -62,7 +62,7 @@ export const LineChart = (props) => {
   }
 
   return (
-    <div className="chart-container" style={{ height: '80vh', width: '90%' }}>
+    <div className="chart-container" style={{ margin: 'auto', height: '60vh', width: '80%' }}>
       <Line data={data} options={options} />
     </div>
 
