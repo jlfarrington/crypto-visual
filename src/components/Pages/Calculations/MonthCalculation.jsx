@@ -5,9 +5,9 @@ export const MonthCalculation = ({ prices }) => {
         return changeInPrice;
     };
   return (
-    <>
+    <div className="calc">
     <h3>If you would've invested $100 a month ago, you would have ${Math.round(calcInvestAmount(100) * 100) / 100} today.</h3>
-    </>
+    </div>
 
   );
 };

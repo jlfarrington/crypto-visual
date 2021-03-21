@@ -1,0 +1,19 @@
+.calc {
+    margin: 40px auto 40px auto;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: #0c5d7b80;
+    padding: 20px;
+    line-height: 30px;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+
+#investment-amount {
+    width: 50%;
+    text-align: center;
+    align-self: center;
+}

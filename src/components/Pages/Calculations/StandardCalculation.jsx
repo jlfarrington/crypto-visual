@@ -5,9 +5,9 @@ export const StandardCalculation = ({ startDate, endDate, prices }) => {
         return changeInPrice;
     };
   return (
-    <>
+    <div className="calc">
     <h3>If you would've invested $100 on {startDate}, you would have ${Math.round(calcInvestAmount(100) * 100) / 100} on {endDate}!</h3>
-    </>
+    </div>
 
   );
 };
