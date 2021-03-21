@@ -5,6 +5,7 @@ import { StandardCalculation } from '../Calculations/StandardCalculation';
 export const MonthChart = () => {
     const [monthData, setMonthData] = useState([]);
     const [monthPrices, setMonthPrices] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const monthURL = 'https://api.coindesk.com/v1/bpi/historical/close.json';
 
     useEffect(() => {
@@ -15,7 +16,13 @@ export const MonthChart = () => {
           setMonthPrices(Object.values(bitcoinData.bpi))
         };
         getMonthData();
+        setIsLoading(false);
       }, [monthURL]);
 
-    return <> {monthData ? <><LineChart data={monthData}/> <StandardCalculation time='month' prices={monthPrices} /></> : <></>} </>
+      return (
+        <div className='crypto-page'>
+          {monthData && !isLoading ? <>
+            <LineChart data={monthData} /><StandardCalculation time='month' prices={monthPrices} /></>
+            : <div className="loader"></div>} </div>
+      );
 }

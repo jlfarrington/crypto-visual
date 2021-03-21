@@ -6,6 +6,7 @@ import { StandardCalculation } from '../Calculations/StandardCalculation';
 export const YearChart = () => {
   const [yearData, setYearData] = useState([]);
   const [yearPrices, setYearPrices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const startDate = dateRange(365).startDate;
   const endDate = dateRange(365).endDate;
   const yearURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
@@ -19,6 +20,7 @@ export const YearChart = () => {
       setYearPrices(Object.values(filtered))
     };
     getYearData();
+    setIsLoading(false);
   }, [yearURL]);
 
   // we have to filter our data for performance reasons, chart tends to lag when dealing with a year or more of data
@@ -43,5 +45,10 @@ export const YearChart = () => {
     return filtered;
   }
 
-  return <> {yearData ? <> <LineChart data={yearData} /> <StandardCalculation time='year' prices={yearPrices} /> </>: <></>} </>;
+  return (
+    <div className='crypto-page'>
+      {yearData && !isLoading ? <>
+        <LineChart data={yearData} /><StandardCalculation time='year' prices={yearPrices} /></>
+        : <div className="loader"></div>} </div>
+  );
 }

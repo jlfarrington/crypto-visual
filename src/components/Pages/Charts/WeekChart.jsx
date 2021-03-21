@@ -6,6 +6,7 @@ import dateRange from '../../Shared/dateRange';
 export const WeekChart = () => {
   const [weekData, setWeekData] = useState([]);
   const [weekPrices, setWeekPrices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const startDate = dateRange(7).startDate;
   const endDate = dateRange(7).endDate;
   const weekURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
@@ -18,7 +19,13 @@ export const WeekChart = () => {
       setWeekPrices(Object.values(bitcoinData.bpi))
     };
     getWeekData();
+    setIsLoading(false);
   }, [weekURL]);
 
-  return <> {weekData ? <><LineChart data={weekData} /><StandardCalculation time='week' prices={weekPrices} /></> : <></>} </>;
+  return (
+    <div className='crypto-page'>
+      {weekData && !isLoading ? <>
+        <LineChart data={weekData} /><StandardCalculation time='week' prices={weekPrices} /></>
+        : <div className="loader"></div>} </div>
+  );
 };

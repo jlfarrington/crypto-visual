@@ -6,6 +6,7 @@ import { StandardCalculation } from '../Calculations/StandardCalculation';
 export const ThreeMonthChart = () => {
   const [threeMonthData, setThreeMonthData] = useState([]);
   const [threeMonthPrices, setThreeMonthPrices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const startDate = dateRange(90).startDate;
   const endDate = dateRange(90).endDate;
   const threeMonthURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
@@ -18,7 +19,13 @@ export const ThreeMonthChart = () => {
       setThreeMonthPrices(Object.values(bitcoinData.bpi))
     };
     getThreeMonthData();
+    setIsLoading(false);
   }, [threeMonthURL]);
 
-  return <> {threeMonthData ? <><LineChart data={threeMonthData} /> <StandardCalculation time="three month's" prices={threeMonthPrices} /> </> : null} </>;
+  return (
+    <div className='crypto-page'>
+      {threeMonthData && !isLoading ? <>
+        <LineChart data={threeMonthData} /><StandardCalculation time="three month's" prices={threeMonthPrices} /></>
+        : <div className="loader"></div>} </div>
+  );
 }
