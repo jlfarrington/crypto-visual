@@ -1,0 +1,10 @@
+.site-page-header {
+    color: white!important;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+h1{
+    color: white!important;
+}

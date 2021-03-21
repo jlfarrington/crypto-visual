@@ -1,3 +1,5 @@
+import '../Calculations/Calculations.css'
+
 export const AllTimeCalculation = ({ startDate, endDate, prices }) => {
     
     const calcInvestAmount = (num) => {
@@ -5,9 +7,9 @@ export const AllTimeCalculation = ({ startDate, endDate, prices }) => {
         return changeInPrice;
     };
   return (
-    <>
+    <div className="calc">
     <h3>If you would've invested $100 when Bitcoin emerged, you would have ${Math.round(calcInvestAmount(100) * 100) / 100} today!</h3>
-    </>
+    </div>
 
   );
 };

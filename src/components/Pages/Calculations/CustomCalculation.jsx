@@ -8,7 +8,7 @@ export const CustomCalculation = ({ startDate, endDate, prices }) => {
     return changeInPrice;
   };
   return (
-    <div>
+    <div className="calc">
         <h3>Calculate your would-be yield from the custom date range above:</h3>
       <label htmlFor="investment-amount">Invest Amount:</label>
       <input
@@ -17,9 +17,10 @@ export const CustomCalculation = ({ startDate, endDate, prices }) => {
         placeholder="$"
         onChange={(e) => setInvestAmount(e.target.value)}
       />
-      <button onClick={() => calcInvestAmount()}>Calculate</button>
+      <br />
 
-      {(investAmount > 0) ? <h3>${Math.round(calcInvestAmount(investAmount) * 100) / 100}</h3> : null}
+      {(investAmount > 0) ? <> <h3>Would-Be Yield:</h3><h3>
+        ${Math.round(calcInvestAmount(investAmount) * 100) / 100}</h3></> : null}
     </div>
   );
 };
