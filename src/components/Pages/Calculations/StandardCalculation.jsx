@@ -1,4 +1,4 @@
-export const SampleCalculation = ({ startDate, endDate, prices }) => {
+export const StandardCalculation = ({ startDate, endDate, prices }) => {
     
     const calcInvestAmount = (num) => {
         let changeInPrice = (num * prices[prices.length - 1]) / prices[1];

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
 import dateRange from '../../Shared/dateRange';
+import { AllTimeCalculation } from '../Calculations/AllTimeCalculation';
 
 export const AllTimeChart = () => {
   const [allTimeData, setAllTimeData] = useState([]);
+  const [allTimePrices, setAllTimePrices] = useState([]);
   const startDate = '2013-09-20'
   const endDate = dateRange(7).endDate;
   const yearURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
@@ -14,6 +16,7 @@ export const AllTimeChart = () => {
       const bitcoinData = await response.json();
       const filtered = filterData(bitcoinData.bpi);
       setAllTimeData(filtered);
+      setAllTimePrices(Object.values(filtered))
     };
     getAllTimeData();
   }, [yearURL]);
@@ -40,5 +43,5 @@ export const AllTimeChart = () => {
     return filtered;
   }
 
-  return <> {allTimeData ? <LineChart data={allTimeData} /> : null} </>;
+  return <> {allTimeData ? <><LineChart data={allTimeData} /> <AllTimeCalculation prices={allTimePrices} startDate={startDate} endDate={endDate}/></>: null} </>;
 }

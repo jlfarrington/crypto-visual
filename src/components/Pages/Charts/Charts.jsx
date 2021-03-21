@@ -1,17 +1,46 @@
-import { Link } from 'react-router-dom';
-import { Routes } from '../../Navigation/Routes';
+import React from 'react';
+
+import { Routes } from "../../Navigation/Routes";
+import { Tabs } from "antd";
+
+import { CustomChart } from '../Charts/CustomChart';
+import { MonthChart } from '../Charts/MonthChart'
+import { WeekChart } from '../Charts/WeekChart';
+import { ThreeMonthChart } from '../Charts/ThreeMonthChart';
+import { YearChart } from '../Charts/YearChart';
+import { AllTimeChart } from '../Charts/AllTimeChart'
+
+import 'antd/dist/antd.css'
 
 export const Charts = () => {
-    return (
-        <div>
-            <h1>Crypto App</h1>
-            <Link to="/">1 week</Link>
-            <Link to="/month">1 Month</Link>
-            <Link to="/threemonth">3 Months</Link>
-            <Link to="/year">1 Year</Link>
-            <Link to="/alltime">All Time</Link>
-            <Link to="/custom">Custom</Link>
-            <Routes />
-        </div>
-    )
-}
+  const { TabPane } = Tabs;
+  function callback(key) {
+    console.log(key);
+  }
+
+  return (
+    <div>
+      <Tabs defaultActiveKey="1" onChange={callback}>
+        <TabPane tab="1W" key="1">
+          <WeekChart />
+        </TabPane>
+        <TabPane tab="1M" key="2">
+          <MonthChart />
+        </TabPane>
+        <TabPane tab="3M" key="3">
+          <ThreeMonthChart />
+        </TabPane>
+        <TabPane tab="1Y" key="4">
+          <YearChart />
+        </TabPane>
+        <TabPane tab="All" key="5">
+          <AllTimeChart />
+        </TabPane>
+        <TabPane tab="Custom" key="6">
+          <CustomChart />
+        </TabPane>
+      </Tabs>
+      <Routes />
+    </div>
+  );
+};

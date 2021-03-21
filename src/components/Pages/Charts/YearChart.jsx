@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
 
 import dateRange from '../../Shared/dateRange';
-import { SampleCalculation } from '../Calculations/SampleCalculation'
+import { StandardCalculation } from '../Calculations/StandardCalculation'
 
 export const YearChart = () => {
   const [yearData, setYearData] = useState([]);
@@ -44,5 +44,5 @@ export const YearChart = () => {
     return filtered;
   }
 
-  return <> {yearData ? <> <LineChart data={yearData} /> <SampleCalculation startDate={startDate} endDate={endDate} prices={yearPrices} /> </>: null} </>;
+  return <> {yearData ? <> <LineChart data={yearData} /> <StandardCalculation startDate={startDate} endDate={endDate} prices={yearPrices} /> </>: null} </>;
 }
