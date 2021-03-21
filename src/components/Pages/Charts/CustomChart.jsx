@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
-import { CustomCalculation } from '../Calculations/CustomCalculation'
-
-import './Charts.css'
+import { CustomCalculation } from '../Calculations/CustomCalculation';
 
 export const CustomChart = () => {
   const [customData, setCustomData] = useState();

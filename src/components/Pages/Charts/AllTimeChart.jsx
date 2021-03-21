@@ -6,7 +6,7 @@ import { AllTimeCalculation } from '../Calculations/AllTimeCalculation';
 export const AllTimeChart = () => {
   const [allTimeData, setAllTimeData] = useState([]);
   const [allTimePrices, setAllTimePrices] = useState([]);
-  const startDate = '2013-09-20'
+  const startDate = '2013-09-20';
   const endDate = dateRange(7).endDate;
   const yearURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
 

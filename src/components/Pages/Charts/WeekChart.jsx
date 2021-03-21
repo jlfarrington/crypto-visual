@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
-import { StandardCalculation } from '../Calculations/StandardCalculation'
+import { StandardCalculation } from '../Calculations/StandardCalculation';
 import dateRange from '../../Shared/dateRange';
-
 
 export const WeekChart = () => {
   const [weekData, setWeekData] = useState([]);

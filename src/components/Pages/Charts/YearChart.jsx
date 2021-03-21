@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
-
 import dateRange from '../../Shared/dateRange';
-import { StandardCalculation } from '../Calculations/StandardCalculation'
+import { StandardCalculation } from '../Calculations/StandardCalculation';
 
 export const YearChart = () => {
   const [yearData, setYearData] = useState([]);
