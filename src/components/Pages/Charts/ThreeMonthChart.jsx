@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
 import dateRange from '../../Shared/dateRange';
-import { SampleCalculation } from '../Calculations/SampleCalculation';
+import { StandardCalculation } from '../Calculations/StandardCalculation';
 
 export const ThreeMonthChart = () => {
     const [threeMonthData, setThreeMonthData] = useState([]);
@@ -21,6 +21,6 @@ export const ThreeMonthChart = () => {
       getThreeMonthData();
     }, [threeMonthURL]);
   
-    return <> {threeMonthData ? <><LineChart data={threeMonthData} /> <SampleCalculation startDate={startDate} endDate={endDate} prices={threeMonthPrices} /> </>: null} </>;
+    return <> {threeMonthData ? <><LineChart data={threeMonthData} /> <StandardCalculation startDate={startDate} endDate={endDate} prices={threeMonthPrices} /> </>: null} </>;
 }
  

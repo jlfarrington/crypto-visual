@@ -10,7 +10,7 @@ export const Routes = () => {
     return (
         <>
             <Switch>
-                <Route exact path="/"><WeekChart/></Route>
+                {/* <Route exact path="/"><WeekChart/></Route> */}
                 <Route exact path="/month"><MonthChart /></Route>
                 <Route exact path="/threemonth"><ThreeMonthChart /></Route>
                 <Route exact path="/year"><YearChart /></Route>
