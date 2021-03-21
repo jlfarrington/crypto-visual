@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { LineChart } from '../../Shared/LineChart';
-import { MonthCalculation } from '../Calculations/MonthCalculation';
+import { StandardCalculation } from '../Calculations/StandardCalculation';
 
 export const MonthChart = () => {
     const [monthData, setMonthData] = useState([]);
@@ -17,5 +17,5 @@ export const MonthChart = () => {
         getMonthData();
       }, [monthURL]);
 
-    return <> {monthData ? <><LineChart data={monthData}/> <MonthCalculation prices={monthPrices} /></> : null} </>
+    return <> {monthData ? <><LineChart data={monthData}/> <StandardCalculation time='month' prices={monthPrices} /></> : <></>} </>
 }

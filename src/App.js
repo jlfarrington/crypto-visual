@@ -8,10 +8,10 @@ const { Header, Footer, Content } = Layout;
 function App() {
   return (
     <Layout>
-      <Header>
+      <Header className='nav-section'>
         <Navbar />
       </Header>
-      <Content>
+      <Content className='site-content'>
         <Charts />
       </Content> 
       <Footer />

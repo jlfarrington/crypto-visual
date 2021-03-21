@@ -1,11 +1,45 @@
+.site-content {
+    z-index: 0;
+}
+
 .custom-date-input {
     display: flex;
     flex-direction: column;
     width: 20%;
     align-content: center;
     margin: auto auto 30px auto;
-
 }
-h2{
+
+h2 {
     text-align: center;
 }
+
+/* override ant design tabs */
+.ant-tabs {
+    color: #6b6b6b;
+}
+
+.ant-tabs-nav-wrap {
+    margin: 7% 15% 0 0;
+    justify-content: flex-end;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #001529 !important;
+    font-weight: 500;
+}
+
+.ant-tabs-tab:hover {
+    color: #001529 !important;
+}
+
+.ant-tabs-ink-bar {
+    position: absolute;
+    background: #001529;
+    pointer-events: none;
+ }
+
+
+
+
+

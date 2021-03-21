@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
 import dateRange from '../../Shared/dateRange';
-import { AllTimeCalculation } from '../Calculations/AllTimeCalculation';
+import { StandardCalculation } from '../Calculations/StandardCalculation';
 
 export const AllTimeChart = () => {
   const [allTimeData, setAllTimeData] = useState([]);
@@ -43,5 +43,5 @@ export const AllTimeChart = () => {
     return filtered;
   }
 
-  return <> {allTimeData ? <><LineChart data={allTimeData} /> <AllTimeCalculation prices={allTimePrices} startDate={startDate} endDate={endDate}/></>: null} </>;
+  return <> {allTimeData ? <><LineChart data={allTimeData} /> <StandardCalculation time='all' prices={allTimePrices} /></>: <></>} </>;
 }

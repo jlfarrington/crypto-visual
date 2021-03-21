@@ -20,5 +20,5 @@ export const ThreeMonthChart = () => {
     getThreeMonthData();
   }, [threeMonthURL]);
 
-  return <> {threeMonthData ? <><LineChart data={threeMonthData} /> <StandardCalculation startDate={startDate} endDate={endDate} prices={threeMonthPrices} /> </> : null} </>;
+  return <> {threeMonthData ? <><LineChart data={threeMonthData} /> <StandardCalculation time="three month's" prices={threeMonthPrices} /> </> : null} </>;
 }

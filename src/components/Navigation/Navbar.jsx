@@ -1,8 +1,8 @@
 export const Navbar = () => {
   return (
     <div className='site-page-header'>
-        <h1>Hindsight</h1>
-        <p>A Bitcoin Data Visualization App</p>
+        <h1 className='logo'>Hindsight</h1>
+        <p className='slogan'>Bitcoin Data Visualizer</p>
     </div>
   );
 };

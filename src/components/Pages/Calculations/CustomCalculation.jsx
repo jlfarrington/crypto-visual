@@ -10,7 +10,7 @@ export const CustomCalculation = ({ prices }) => {
 
   return (
     <div className='calc'>
-      <h3>Calculate your would-be yield from the custom date range above:</h3>
+      <h3 className='calc-text'>Calculate your would-be yield from the custom date range above:</h3>
       <label htmlFor='investment-amount'>Invest Amount:</label>
       <input
         type='number'

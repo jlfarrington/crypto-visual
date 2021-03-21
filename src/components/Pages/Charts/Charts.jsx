@@ -11,8 +11,8 @@ export const Charts = () => {
   const { TabPane } = Tabs;
 
   return (
-    <div>
-      <Tabs defaultActiveKey='1'>
+    <div className='charts-page'>
+      <Tabs className="ant-tabs" defaultActiveKey='1'>
         <TabPane tab='1W' key='1'>
           <WeekChart />
         </TabPane>

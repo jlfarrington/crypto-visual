@@ -43,5 +43,5 @@ export const YearChart = () => {
     return filtered;
   }
 
-  return <> {yearData ? <> <LineChart data={yearData} /> <StandardCalculation startDate={startDate} endDate={endDate} prices={yearPrices} /> </>: null} </>;
+  return <> {yearData ? <> <LineChart data={yearData} /> <StandardCalculation time='year' prices={yearPrices} /> </>: <></>} </>;
 }

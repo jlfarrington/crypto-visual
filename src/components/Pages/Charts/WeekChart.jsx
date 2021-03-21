@@ -20,5 +20,5 @@ export const WeekChart = () => {
     getWeekData();
   }, [weekURL]);
 
-  return <> {weekData ? <><LineChart data={weekData} /><StandardCalculation startDate={startDate} endDate={endDate} prices={weekPrices} /></> : null} </>;
+  return <> {weekData ? <><LineChart data={weekData} /><StandardCalculation time='week' prices={weekPrices} /></> : <></>} </>;
 };
