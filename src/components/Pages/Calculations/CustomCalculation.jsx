@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export const CustomCalculation = ({ startDate, endDate, prices }) => {
+export const CustomCalculation = ({ prices }) => {
   const [investAmount, setInvestAmount] = useState();
 
   const calcInvestAmount = (amount) => {
     let changeInPrice = (amount * prices[prices.length - 1]) / prices[1];
     return changeInPrice;
   };
+
   return (
-    <div className="calc">
-        <h3>Calculate your would-be yield from the custom date range above:</h3>
-      <label htmlFor="investment-amount">Invest Amount:</label>
+    <div className='calc'>
+      <h3 className='calc-text'>Calculate your would-be yield from the custom date range above:</h3>
+      <label htmlFor='investment-amount'>Invest Amount:</label>
       <input
-        type="number"
-        id="investment-amount"
-        placeholder="$"
+        type='number'
+        id='investment-amount'
+        placeholder='$'
         onChange={(e) => setInvestAmount(e.target.value)}
       />
       <br />

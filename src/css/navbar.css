@@ -1,0 +1,24 @@
+.nav-section {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+}
+
+.site-page-header {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+}
+
+.slogan {
+    font-size: 16px;
+}

@@ -23,8 +23,8 @@ export const LineChart = (props) => {
     labels: dates,
     datasets: [{
       data: payout,
-      backgroundColor: '#d9514e80',
-      borderColor: '#d9514e',
+      backgroundColor: '#C9EBC1',
+      borderColor: '#67CA53',
       borderWidth: 2
     }]
   }

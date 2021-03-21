@@ -1,0 +1,27 @@
+@import './calculations.css';
+@import './charts.css';
+@import './navbar.css';
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.crypto-page {
+    height: 100vh;
+}
+
+.loader {
+    border: 10px solid transparent;
+    border-top: 10px solid #001529;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+    margin: 10% 0 0 50%;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
