@@ -8,7 +8,7 @@
     width: 60%;
     text-align: center;
     background-color: #001529;
-    padding: 20px;
+    padding: 25px;
     line-height: 30px;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
     border-radius: 25px;
@@ -18,8 +18,36 @@
     color: white;
 }
 
+.calc.dates {
+    min-height: 275px;
+}
+
+.invested-amount {
+    color: white;
+    font-size: 22px;    
+}
+
 #investment-amount {
     width: 50%;
     text-align: center;
     align-self: center;
+    color: #6b6b6b;
 }
+
+#investment-amount:focus {
+    outline: none;
+}
+
+input[type=number] {
+    color: #6b6b6b;
+}
+
+
+@media(max-width: 450px) {
+    .calc {
+        font-size: 16px;
+    }
+}
+
+
+

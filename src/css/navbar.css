@@ -21,4 +21,45 @@
 
 .slogan {
     font-size: 16px;
+    font-weight: 500;
+}
+
+@media(max-width: 450px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .slogan {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 375px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    .slogan {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 320px) {
+    .logo {
+        font-size: 14px;
+    }
+
+    .slogan {
+        font-size: 11px;
+    }
+}
+
+@media(max-width: 280px) {
+    .logo {
+        font-size: 12px;
+    }
+
+    .slogan {
+        font-size: 9px;
+    }
 }

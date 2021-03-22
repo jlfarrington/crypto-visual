@@ -4,10 +4,41 @@
 
 .custom-date-input {
     display: flex;
-    flex-direction: column;
-    width: 20%;
-    align-content: center;
-    margin: auto auto 30px auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 5%;
+}
+
+#startdate {
+    margin: auto;
+}
+
+#enddate {
+    margin: auto;
+}
+
+input[type=date] {
+    color: #6b6b6b;
+}
+
+.submit-btn {
+    margin: auto;
+    color: white;
+    background-color: #001529;
+    border: solid 1px white;
+    padding: 8px 24px;
+    border-radius: 12px;
+}
+
+.submit-btn:hover {
+    font-weight: 500;
+    border: solid 2px white;
+}
+
+.submit-btn:focus {
+    outline: none;
 }
 
 h2 {
@@ -38,6 +69,42 @@ h2 {
     background: #001529;
     pointer-events: none;
  }
+
+ @media(max-width: 1330px) {
+    .custom-date-input {
+        flex-direction: column;
+    }
+}
+
+
+ @media(max-width: 900px) {
+    .ant-tabs-nav-wrap {
+        margin: 20% 15% 0 0;
+    }
+}
+
+@media(max-width: 475px) {
+
+    #startdate {
+        max-width: 150px;
+    }
+    
+    #enddate {
+        max-width: 150px;
+    }
+}
+
+@media(max-width: 450px) {
+    .ant-tabs-tab {
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 320px) {
+    .ant-tabs-tab {
+        font-size: 9px;
+    }
+}
 
 
 
