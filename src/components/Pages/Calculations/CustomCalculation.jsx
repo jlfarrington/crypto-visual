@@ -15,13 +15,13 @@ export const CustomCalculation = ({ prices }) => {
       <input
         type='number'
         id='investment-amount'
-        placeholder='$'
+        placeholder='ex: $100'
         onChange={(e) => setInvestAmount(e.target.value)}
       />
       <br />
 
-      {(investAmount > 0) ? <> <h3>Would-Be Yield:</h3><h3>
-        ${Math.round(calcInvestAmount(investAmount) * 100) / 100}</h3></> : null}
+      {(investAmount > 0) ? <><h3 className='invested-amount'>Would-Be Yield:</h3><h3 className='invested-amount'>
+      ${Math.round(calcInvestAmount(investAmount) * 100) / 100}</h3></> : <></>}
     </div>
   );
 };

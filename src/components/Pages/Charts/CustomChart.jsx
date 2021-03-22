@@ -47,13 +47,17 @@ export const CustomChart = () => {
         </div>
         <button className='submit-btn' onClick={() => getCustomData()}>Submit</button>
       </div>
-      
+
       {customData || !isLoading ? (
         <div>
           <div>
             <LineChart data={customData} />
           </div>
-          <CustomCalculation startDate={startDate} endDate={endDate} prices={customPrices} />
+          {
+            customData ?
+              <CustomCalculation startDate={startDate} endDate={endDate} prices={customPrices} />
+              : <></>
+          }
         </div>
       ) : <div className="loader"></div>}
     </div>

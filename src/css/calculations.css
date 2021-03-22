@@ -22,8 +22,22 @@
     min-height: 275px;
 }
 
+.invested-amount {
+    color: white;
+    font-size: 22px;    
+}
+
 #investment-amount {
     width: 50%;
     text-align: center;
     align-self: center;
+    color: #6b6b6b;
+}
+
+#investment-amount:focus {
+    outline: none;
+}
+
+input[type=number] {
+    color: #6b6b6b;
 }
