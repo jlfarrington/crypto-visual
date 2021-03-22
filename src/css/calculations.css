@@ -42,6 +42,7 @@ input[type=number] {
     color: #6b6b6b;
 }
 
+
 @media(max-width: 450px) {
     .calc {
         font-size: 16px;
