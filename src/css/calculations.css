@@ -8,7 +8,7 @@
     width: 60%;
     text-align: center;
     background-color: #001529;
-    padding: 20px;
+    padding: 25px;
     line-height: 30px;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
     border-radius: 25px;
@@ -16,6 +16,10 @@
 
 .calc-text {
     color: white;
+}
+
+.calc.dates {
+    min-height: 275px;
 }
 
 #investment-amount {
