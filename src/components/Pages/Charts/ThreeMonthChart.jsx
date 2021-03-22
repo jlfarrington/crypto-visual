@@ -25,7 +25,7 @@ export const ThreeMonthChart = () => {
   return (
     <div className='crypto-page'>
       {threeMonthData && !isLoading ? <>
-        <LineChart data={threeMonthData} /><StandardCalculation time="three month's" prices={threeMonthPrices} /></>
+        <LineChart data={threeMonthData} /><StandardCalculation time="three months" prices={threeMonthPrices} /></>
         : <div className="loader"></div>} </div>
   );
 }
