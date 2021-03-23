@@ -8,7 +8,7 @@ export const StandardCalculation = ({ time, prices }) => {
   return (
     <div className='calc'>
       {
-        time === "three month's" ?
+        time === "three months" ?
         <h3 className='calc-text'>If you would've invested $100 {time} ago, you would have ${Math.round(calcInvestAmount(100) * 100) / 100} today.</h3>
         : time === 'all' ?
         <h3 className='calc-text'>If you would've invested $100 when Bitcoin emerged, you would have ${Math.round(calcInvestAmount(100) * 100) / 100} today!</h3>
