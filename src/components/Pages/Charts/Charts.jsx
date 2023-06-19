@@ -13,6 +13,9 @@ export const Charts = () => {
   return (
     <div className='charts-page'>
       <Tabs className="ant-tabs" defaultActiveKey='1'>
+        <TabPane tab='1W' key='1'>
+          <WeekChart />
+        </TabPane>
         <TabPane tab='1M' key='2'>
           <MonthChart />
         </TabPane>

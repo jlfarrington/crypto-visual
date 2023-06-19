@@ -1,49 +1,34 @@
 import { useEffect, useState } from 'react';
 import { LineChart } from '../../Shared/LineChart';
-import dateRange from '../../Shared/dateRange';
 import { StandardCalculation } from '../Calculations/StandardCalculation';
+import moment from 'moment';
 
 export const YearChart = () => {
   const [yearData, setYearData] = useState([]);
   const [yearPrices, setYearPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const startDate = dateRange(365).startDate;
-  const endDate = dateRange(365).endDate;
-  const yearURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
+ 
+  
+  const today = moment();
+
+    const todayUnix = today.unix()
+
+    const yearAgo = today.subtract(1, 'years');
+    const yearAgoUnix = yearAgo.unix();
+
+    const yearURL = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=${yearAgoUnix}&to=${todayUnix}&precision=2`;
+
 
   useEffect(() => {
     const getYearData = async () => {
       const response = await fetch(yearURL);
       const bitcoinData = await response.json();
-      const filtered = filterData(bitcoinData.bpi);
-      setYearData(filtered);
-      setYearPrices(Object.values(filtered))
+      setYearData(bitcoinData.prices);
+      setYearPrices(bitcoinData.prices.map(price => price[1]))
     };
     getYearData();
     setIsLoading(false);
-  }, [yearURL]);
-
-  // we have to filter our data for performance reasons, chart tends to lag when dealing with a year or more of data
-  const filterData = (bitcoinData) => {
-    let filteredDates = Object.getOwnPropertyNames(bitcoinData).filter(date => {
-      // get days from date string
-      let splitDate = date.split('-');
-      // get one day from every week of the year
-      return splitDate[2] % 4 === 0;
-    })
-
-    // make sure to include most recent date
-    const allowedDates = [...filteredDates, dateRange(7).yesterday];
-    // filter object to only include bitcoin price from filtered dates above
-    const filtered = Object.keys(bitcoinData)
-      .filter(key => allowedDates.includes(key))
-      .reduce((obj, key) => {
-        obj[key] = bitcoinData[key];
-        return obj;
-      }, {});
-
-    return filtered;
-  }
+  }, []);
 
   return (
     <div className='crypto-page'>

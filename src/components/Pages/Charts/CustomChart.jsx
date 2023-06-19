@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LineChart } from '../../Shared/LineChart';
 import { CustomCalculation } from '../Calculations/CustomCalculation';
+import moment from 'moment';
+
 
 export const CustomChart = () => {
   const [customData, setCustomData] = useState();
@@ -8,7 +10,12 @@ export const CustomChart = () => {
   const [endDate, setEndDate] = useState('');
   const [customPrices, setCustomPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const customURL = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`;
+
+  let customURL;
+
+  useEffect(() => {
+    customURL = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=${moment(startDate).unix()}&to=${moment(endDate).unix()}&precision=2`;
+  }, [startDate, endDate])
 
   const getCustomData = async () => {
     setCustomData({});
@@ -16,8 +23,8 @@ export const CustomChart = () => {
     const response = await fetch(customURL)
       .then(data => data.json())
       .then(bitcoinData => {
-        setCustomData(bitcoinData.bpi);
-        setCustomPrices(Object.values(bitcoinData.bpi));
+        setCustomData(bitcoinData.prices);
+        setCustomPrices(bitcoinData.prices.map(price => price[1]));
         setIsLoading(false);
       })
       .catch(() => {
@@ -48,10 +55,10 @@ export const CustomChart = () => {
         <button className='submit-btn' onClick={() => getCustomData()}>Submit</button>
       </div>
 
-      {customData || !isLoading ? (
+      {customData && !isLoading ? (
         <div>
           <div>
-            <LineChart data={customData} />
+            <LineChart data={customData} chartType="custom" />
           </div>
           {
             customData ?
@@ -59,7 +66,7 @@ export const CustomChart = () => {
               : <></>
           }
         </div>
-      ) : <div className="loader"></div>}
+      ) : isLoading ? <div className="loader"></div> : <div></div>}
     </div>
   );
 };

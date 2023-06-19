@@ -8,16 +8,32 @@ export const LineChart = (props) => {
 
   useEffect(() => {
     const unsortedData = props.data;
+    const chartType = props.chartType;
     let dates = [];
     let payout = [];
-    for (let item in unsortedData) {
-      let bitcoinDates = moment(item).format('MMM DD');
-      dates.push(bitcoinDates);
-      payout.push(unsortedData[item]);
+
+    if (chartType === "1m" || chartType === "1w"){
+    let delta = 24;
+    // the returned data is hourly for dates less than 90 apart. we only need one per day,
+    // so we get every 24th price
+    for (let i=0; i < unsortedData.length; i=i+delta) {
+      let bitcoinDate = moment(unsortedData[i][0]).format('MMM DD');
+      let bitcoinPrice = unsortedData[i][1];
+
+      dates.push(bitcoinDate);
+      payout.push(bitcoinPrice);
     }
+  } else {
+    for (let item of unsortedData) {
+      let bitcoinDate = moment(item[0]).format('MMM DD');
+      dates.push(bitcoinDate);
+      payout.push(item[1]);
+    }
+
+  }
     setDates(dates);
     setPayout(payout);
-  }, [props.data])
+  }, [props])
 
   let data = {
     labels: dates,
