@@ -2,6 +2,7 @@ import { Charts } from './components/Pages/Charts/Charts';
 import  Layout from 'antd/lib/layout';
 import { Navbar } from './components/Navigation/Navbar';
 import './css/main.css';
+import { Copyright } from './components/Navigation/Copyright';
 
 const { Header, Footer, Content } = Layout;
 
@@ -14,7 +15,9 @@ function App() {
       <Content className='site-content'>
         <Charts />
       </Content> 
-      <Footer />
+      <Footer className='footer-section'>
+        <Copyright />
+      </Footer>
     </Layout>
   );
 }

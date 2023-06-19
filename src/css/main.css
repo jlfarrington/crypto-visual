@@ -7,10 +7,6 @@ html {
     overflow-x: hidden;
 }
 
-.crypto-page {
-    min-height: 100vh;
-}
-
 .loader {
     border: 10px solid transparent;
     border-top: 10px solid #001529;

@@ -6,12 +6,25 @@
     width: 100%;
 }
 
+.footer-section {
+    z-index: 1;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
 .site-page-header {
     color: white;
     display: flex;
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
+}
+
+.site-page-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .logo {

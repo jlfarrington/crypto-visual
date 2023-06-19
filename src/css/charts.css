@@ -48,6 +48,7 @@ h2 {
 /* override ant design tabs */
 .ant-tabs {
     color: #6b6b6b;
+    min-height: 91vh;
 }
 
 .ant-tabs-nav-wrap {
